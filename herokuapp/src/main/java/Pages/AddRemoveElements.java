@@ -17,19 +17,29 @@ public class AddRemoveElements {
         driver.findElement(By.xpath("//a[contains(text(),'Add/Remove')]")).click();
         Assert.assertTrue(driver.findElement(By.xpath("//h3[contains(text(),'Add/Remove')]")).isDisplayed());
         
-        //Elements
         WebElement addBtn =driver.findElement(By.xpath("//button[text()='Add Element']"));
-        WebElement removeBtn =driver.findElement(By.xpath("//button[text()='Delete']"));
-
+        
         //Add Element 
         addBtn.click();
+        WebElement removeBtn =driver.findElement(By.xpath("//button[text()='Delete']"));
         Assert.assertTrue(removeBtn.isDisplayed());
         
         //Remove Element
         removeBtn.click();
-        Assert.assertFalse(addBtn.isDisplayed());
+        Assert.assertFalse(isElementPresent(removeBtn));
         
-        driver.close();
+        driver.quit();
         
     }
-}
+
+    //To verify the Element Present
+
+    public static Boolean isElementPresent(WebElement element)
+    {
+        try {
+            element.isDisplayed();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }}
