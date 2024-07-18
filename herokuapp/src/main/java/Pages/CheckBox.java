@@ -22,6 +22,13 @@ public class CheckBox {
         Assert.assertTrue(checkBx2.isSelected());
         Assert.assertFalse(checkBx1.isSelected());
 
+        checkBx1.click();
+        checkBx2.click();
+        
+        Assert.assertTrue(checkBx1.isSelected());
+        Assert.assertFalse(checkBx2.isSelected());
+
+
         driver.quit();
 
 
