@@ -13,28 +13,35 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class CheckBoxes {
+public class BrokenImages {
     public static void main(String[] args) {
         
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/");
         driver.findElement(By.xpath("//a[contains(text(),'Broken')]")).click();
-       
-    //Verify Title Present or not
-       Assert.assertTrue(driver.findElement(By.xpath("//h3[contains(text(),'Broken')]")).isDisplayed());
+        //Verify Title Present or not
+        Assert.assertTrue(driver.findElement(By.xpath("//h3[contains(text(),'Broken')]")).isDisplayed());
 
-    //Find all Images   
-       List <WebElement> images = driver.findElements(By.tagName("img"));
+        int iBrokenImageCount =0;
+        List <WebElement> images = driver.findElements(By.tagName("img"));
        for (WebElement img : images) {
-            CloseableHttpClient client = HttpClients.createDefault();
-            HttpGet request = new HttpGet(img.getAttribute("src"));
-            CloseableHttpResponse response = client.execute(request);
-            //if (response.getStatusLine().getSta)
-
+        //Using API Response code  
+          /*  CloseableHttpClient client = HttpClients.createDefault();
+            HttpGet request = new HttpGet(img.getAttribute("src")); 
+            CloseableHttpResponse response = client.execute(request); 
+            //if (response.getStatusLine().getSta)*/
+                
+            if (img.getAttribute("naturalWidth").equals("0"))
+                {
+                    System.out.println(img.getAttribute("outerHTML") + " is broken.");
+                    iBrokenImageCount++;
+                }
+            }
+            System.out.println(iBrokenImageCount);
        }
-
+        
 
     }
     
-}
+
