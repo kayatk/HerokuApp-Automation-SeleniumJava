@@ -19,8 +19,10 @@ public class CheckBox {
         WebElement checkBx1 = driver.findElement(By.xpath("(//input[@type='checkbox'])[1]"));
         WebElement checkBx2 = driver.findElement(By.xpath("(//input[@type='checkbox'])[2]"));
 
-        Assert.assertTrue(checkBx2.isEnabled());
-        
+        Assert.assertTrue(checkBx2.isSelected());
+        Assert.assertFalse(checkBx1.isSelected());
+
+        driver.quit();
 
 
     }
