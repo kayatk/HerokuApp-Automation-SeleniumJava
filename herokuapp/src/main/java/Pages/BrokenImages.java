@@ -39,6 +39,7 @@ public class BrokenImages {
                 }
             }
             System.out.println(iBrokenImageCount);
+            driver.quit();
        }
         
 
