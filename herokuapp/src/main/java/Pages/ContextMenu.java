@@ -1,10 +1,13 @@
 package Pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ContextMenu {
     public static void main(String[] args) {
@@ -16,14 +19,17 @@ public class ContextMenu {
         Assert.assertTrue(title.isDisplayed());
 
         Actions action = new Actions(driver);
-        action.contextClick(driver.findElement(By.id("hot-spot")));
-       // action.contextClick();
-       try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-    }
+        action.contextClick(driver.findElement(By.id("hot-spot"))).build().perform();
+       System.out.println(ExpectedConditions.alertIsPresent());
+        
+         
+        //Handling Jasvascript Alerts
+        Alert alert = driver.switchTo().alert();
+        String alertText =alert.getText();
+        Assert.assertTrue(alertText.contains("context menu"));
+        alert.accept();
+      //  Boolean x = (ExpectedConditions.alertIsPresent());
+        //Assert.assertFalse();
         driver.quit();
 
     }
