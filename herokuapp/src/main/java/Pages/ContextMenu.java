@@ -25,10 +25,11 @@ public class ContextMenu {
          
         //Handling Jasvascript Alerts
         Alert alert = driver.switchTo().alert();
+        // driver.switchTo().alert().accept();
         String alertText =alert.getText();
         Assert.assertTrue(alertText.contains("context menu"));
         alert.accept();
-      //  Boolean x = (ExpectedConditions.alertIsPresent());
+        //  Boolean x = (ExpectedConditions.alertIsPresent());
         //Assert.assertFalse();
         driver.quit();
 
