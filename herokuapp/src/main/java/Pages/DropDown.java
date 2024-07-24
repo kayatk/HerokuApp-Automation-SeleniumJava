@@ -17,10 +17,19 @@ public class DropDown {
        driver.get("https://the-internet.herokuapp.com/dropdown");
        WebElement title =driver.findElement(By.cssSelector("h3"));
        Assert.assertTrue(title.getText().contains("Dropdown List"));
+
+       //Dropdown
        Select select =new Select(driver.findElement(By.id("dropdown")));
        select.selectByVisibleText("Option 1");
-      Assert.assertEquals(select.getFirstSelectedOption(),"Option 1");
+      Assert.assertEquals(select.getFirstSelectedOption().getText(),"Option 1");
 
+      //Navigating back to the main page
+     // driver.navigate().back();
+      //Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Available Examples']")).isDisplayed());
+
+      driver.quit();
+
+      
     }
     
 }
