@@ -12,7 +12,7 @@ public class Inputs {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/inputs");
-        WebElement input = driver.findElement(By.xpath("//input[@type=\"number\"]"))
+        WebElement input = driver.findElement(By.xpath("//input[@type=\"number\"]"));
         Assert.assertTrue(driver.getCurrentUrl().contains("inputs"));
 
         //Handling Number Input
