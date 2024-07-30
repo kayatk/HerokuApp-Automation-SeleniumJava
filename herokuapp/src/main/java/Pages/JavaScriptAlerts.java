@@ -1,5 +1,7 @@
 package Pages;
 
+import java.time.Duration;
+
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -24,10 +26,11 @@ public class JavaScriptAlerts {
         driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
         Assert.assertEquals(driver.switchTo().alert().getText(),"I am a JS Confirm");
         driver.switchTo().alert().dismiss();
-        Assert.assertTrue(driver.findElement(By.xpath("You clicked: Cancel")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//p[text()='You clicked: Cancel']")).isDisplayed());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.findElement(By.xpath("//button[contains(text(),'Confirm')]")).click();
         driver.switchTo().alert().accept();
-        Assert.assertTrue(driver.findElement(By.xpath("You clicked: Ok")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//p[text()='You clicked: Ok']")).isDisplayed());
 
 
         //JS Prompt
@@ -38,6 +41,7 @@ public class JavaScriptAlerts {
         Assert.assertEquals(driver.switchTo().alert().getText(),"You entered: "+msg);
         driver.findElement(By.xpath("//button[contains(text(),'Prompt')]")).click();
         driver.switchTo().alert().dismiss();
+        Assert.assertTrue(driver.findElement(By.xpath("//p[text()='You entered: null']")).isDisplayed());
         
 
     }
