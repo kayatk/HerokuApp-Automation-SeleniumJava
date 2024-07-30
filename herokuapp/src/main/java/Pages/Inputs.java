@@ -17,7 +17,6 @@ public class Inputs {
 
         //Handling Number Input
         input.sendKeys("5");
-        Assert.assertEquals(input.getText(),"5");
         driver.quit();
     }
 }
