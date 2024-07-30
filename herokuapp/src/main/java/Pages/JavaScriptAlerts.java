@@ -35,15 +35,16 @@ public class JavaScriptAlerts {
 
         //JS Prompt
         driver.findElement(By.xpath("//button[contains(text(),'Prompt')]")).click();
+        Assert.assertEquals(driver.switchTo().alert().getText(),"I am a JS prompt");
         String msg ="Text";
         driver.switchTo().alert().sendKeys(msg);
         driver.switchTo().alert().accept();
-        Assert.assertEquals(driver.switchTo().alert().getText(),"You entered: "+msg);
+        Assert.assertTrue(driver.findElement(By.xpath("//p[text()='You entered: "+msg+"']")).isDisplayed());
         driver.findElement(By.xpath("//button[contains(text(),'Prompt')]")).click();
         driver.switchTo().alert().dismiss();
         Assert.assertTrue(driver.findElement(By.xpath("//p[text()='You entered: null']")).isDisplayed());
         
-
+        driver.quit();
     }
     
 }
