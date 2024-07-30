@@ -23,10 +23,11 @@ public class DropDown {
        select.selectByVisibleText("Option 1");
       Assert.assertEquals(select.getFirstSelectedOption().getText(),"Option 1");
 
+      //Navigation
       //Navigating back to the main page
      // driver.navigate().back();
-      //Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Available Examples']")).isDisplayed());
-
+    //Assert.assertTrue(driver.findElement(By.xpath("//h2[text()='Available Examples']")).isDisplayed());
+   
       driver.quit();
 
       
