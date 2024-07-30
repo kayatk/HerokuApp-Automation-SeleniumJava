@@ -16,7 +16,8 @@ public class Inputs {
         Assert.assertTrue(driver.getCurrentUrl().contains("inputs"));
 
         //Handling Number Input
+        driver.findElement(By.xpath("//input[@type=\"number\"]")).sendKeys("5");
 
-        driver.quit();
+       // driver.quit();
     }
 }
