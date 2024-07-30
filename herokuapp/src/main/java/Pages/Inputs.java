@@ -12,12 +12,12 @@ public class Inputs {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/inputs");
-       // WebElement title = driver.findElement(By.xpath("null"));
+        WebElement input = driver.findElement(By.xpath("//input[@type=\"number\"]"))
         Assert.assertTrue(driver.getCurrentUrl().contains("inputs"));
 
         //Handling Number Input
-        driver.findElement(By.xpath("//input[@type=\"number\"]")).sendKeys("5");
+        input.sendKeys("5");
 
-       // driver.quit();
+        driver.quit();
     }
 }
