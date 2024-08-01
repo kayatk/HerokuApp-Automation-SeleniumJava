@@ -22,7 +22,7 @@ public class DragAndDrop {
 
         //Action class
         Actions action = new Actions(driver);
-        action.dragAndDrop(source, target);
+        action.dragAndDrop(source, target).perform();
 
         try {
             Thread.sleep(3000);
