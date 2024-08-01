@@ -1,5 +1,7 @@
 package Pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,16 +22,20 @@ public class DragAndDrop {
         WebElement source = driver.findElement(By.id("column-a"));
         WebElement target =driver.findElement(By.id("column-b"));
 
-        //Action class
+        //Action class -dragAndDrop
         Actions action = new Actions(driver);
         action.dragAndDrop(source, target).perform();
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+       //Action Class -ClickAndHold
+
+       action.clickAndHold(source)
+                    .pause(Duration.ofSeconds(1))
+                    .moveToElement(target)
+                    .pause(Duration.ofSeconds(1))
+                    .release()
+                    .pause(Duration.ofSeconds(1))
+                    .build().perform();
+       
 
         driver.quit();
     }
