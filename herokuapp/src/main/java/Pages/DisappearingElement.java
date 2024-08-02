@@ -24,6 +24,7 @@ public class DisappearingElement {
                 WebElement gallery = driver.findElement(By.xpath("//a[text()='Gallery']"));
                 gallery.isDisplayed();
                 System.out.println("Element found or visible");
+                flag =true;
              } catch (Exception e) {
                 System.out.println("Element not found or not visible");
             }
