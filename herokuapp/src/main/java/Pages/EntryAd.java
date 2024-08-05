@@ -23,9 +23,8 @@ public class EntryAd {
           Assert.assertEquals( driver.findElement(By.xpath("//div[@id = 'modal'] //h3 ")).getText(), "This is a modal window"); 
           driver.findElement(By.xpath("//p[text()='Close']")).click();
             
-        } catch (Exception e) {
-            
-        }
+        }        
+        catch (Exception e) {}
        finally {
         driver.quit();
         }
