@@ -15,12 +15,8 @@ public class EntryAd {
        Assert.assertTrue(title.getText().contains("Entry"));
 
         try {
-          // String windows = driver.getWindowHandle();    
-           //System.out.println(driver.switchTo().window(windows).findElement(By.tagName("h3")).getText());
-           WebElement ele =driver.findElement(By.xpath("//div[@id = 'modal'] //h3 "));
-           System.out.println( ele.getText());
-
-         // Assert.assertEquals( ele.getText(), "This is a modal window"); 
+           WebElement ele =driver.findElement(By.xpath("//div[@id = 'modal'] //h3"));
+         Assert.assertEquals(ele.getAttribute("innerText"), "This is a modal window"); 
           driver.findElement(By.xpath("//p[text()='Close']")).click();
             
         }        
