@@ -13,5 +13,14 @@ public class EntryAd {
        driver.get("https://the-internet.herokuapp.com/entry_ad");
        WebElement title =driver.findElement(By.cssSelector("h3"));
        Assert.assertTrue(title.getText().contains("Entry"));
+
+        try {
+            
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+       finally {
+        driver.quit();
+        }
     }
 }
