@@ -12,35 +12,24 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FileDownload {
     public static void main(String[] args) {
+       
+       
+       String path ="/Users/kaya/Documents/Selenium/herokuapp/herokuapp/src/main/resources";
+        Map<String,String> preferences =new HashMap<>();
+        preferences.put("download.default_directory",path );
         ChromeOptions option = new ChromeOptions();
-        Map<String,Object> download =new HashMap<String,Object>();
-        download.put("download.default_directory", "herokuapp/src/main/resources");
-        option.setExperimentalOption("download", download);
+        option.setExperimentalOption("prefs", preferences);
+        System.out.println(System.getProperty("user.dir")+"/Selenium/herokuapp/herokuapp/src/main/resources");
 
         WebDriver driver =new ChromeDriver(option);
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/download");
         Assert.assertTrue(driver.getCurrentUrl().contains("download"));
-    
-
         driver.findElement(By.xpath("//a[text()='selenium-snapshot.png']")).click();
-        Assert.assertTrue(isFileAvailable(),"File Not Found");
+      
+      driver.quit();
         
     }
     
-    public boolean isFileAvailable(){
-
-        File folder =new File("herokuapp/src/main/resources");
-        File[] lFiles =folder.listFiles();
-        boolean isFileAvailable = false;
-        for(File x: lFiles){
-            if(x.isFile()){
-                String fileName =x.getName();
-                if ((fileName.matches(fileName))) {
-                    isFileAvailable =true;
-                }
-            }
-        }
-        return isFileAvailable;
-    }
+   
 }
