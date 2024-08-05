@@ -17,10 +17,10 @@ public class EntryAd {
        Assert.assertTrue(title.getText().contains("Entry"));
 
         try {
-           String windows = driver.getWindowHandle();    
-           System.out.println(driver.switchTo().window(windows).findElement(By.tagName("h3")).getText());
+          // String windows = driver.getWindowHandle();    
+           //System.out.println(driver.switchTo().window(windows).findElement(By.tagName("h3")).getText());
 
-         // Assert.assertEquals( driver.switchTo().window(windows).findElement(By.tagName("h3")).getText(), "This is a modal window"); 
+          Assert.assertEquals( driver.findElement(By.xpath("//div[@id = 'modal'] //h3 ")).getText(), "This is a modal window"); 
           driver.findElement(By.xpath("//p[text()='Close']")).click();
             
         } catch (Exception e) {
