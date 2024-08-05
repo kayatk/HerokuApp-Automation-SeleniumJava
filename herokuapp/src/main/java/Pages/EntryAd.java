@@ -1,5 +1,7 @@
 package Pages;
 
+import java.util.Set;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +17,14 @@ public class EntryAd {
        Assert.assertTrue(title.getText().contains("Entry"));
 
         try {
+           String windows = driver.getWindowHandle();    
+           System.out.println(driver.switchTo().window(windows).findElement(By.tagName("h3")).getText());
+
+         // Assert.assertEquals( driver.switchTo().window(windows).findElement(By.tagName("h3")).getText(), "This is a modal window"); 
+          driver.findElement(By.xpath("//p[text()='Close']")).click();
             
         } catch (Exception e) {
-            // TODO: handle exception
+            
         }
        finally {
         driver.quit();
