@@ -15,6 +15,7 @@ public class FileDownload {
        
        
        String path ="/Users/kaya/Documents/Selenium/herokuapp/herokuapp/src/main/resources";
+      // String path=System.getProperty("user.dir") + "src/main/resources";
         Map<String,String> preferences =new HashMap<>();
         preferences.put("download.default_directory",path );
         ChromeOptions option = new ChromeOptions();
