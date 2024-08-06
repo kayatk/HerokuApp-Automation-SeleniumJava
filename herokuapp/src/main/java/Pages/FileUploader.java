@@ -11,7 +11,6 @@ public class FileUploader {
         WebDriver driver =new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/upload");
-
         driver.findElement(By.id("file-upload")).sendKeys("/Users/kaya/Downloads/IF PES English.docx");
         driver.findElement(By.id("file-submit")).click();
         Assert.assertTrue(driver.findElement(By.tagName("h3")).getText().contains("File Uploaded!"));
