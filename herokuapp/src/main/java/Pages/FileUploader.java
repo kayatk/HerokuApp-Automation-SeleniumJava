@@ -12,7 +12,7 @@ public class FileUploader {
         driver.get("https://the-internet.herokuapp.com/upload");
 
 
-        driver.findElement(By.id("file-upload")).sendKeys("/Users/kaya/Downloads");
+        driver.findElement(By.id("file-upload")).sendKeys("/Users/kaya/Downloads/IF PES English.docx");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
