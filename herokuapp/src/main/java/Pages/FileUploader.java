@@ -12,21 +12,9 @@ public class FileUploader {
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/upload");
 
-
         driver.findElement(By.id("file-upload")).sendKeys("/Users/kaya/Downloads/IF PES English.docx");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.findElement(By.id("file-submit")).click();
-        Assert.assertTrue(driver.findElement(By.tagName("//h3")).getAttribute("innerText").contains("File Uploaded!"));
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Assert.assertTrue(driver.findElement(By.tagName("h3")).getText().contains("File Uploaded!"));
 
         driver.quit();
     }
