@@ -2,6 +2,9 @@ package Pages;
 
 import javax.swing.Action;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class KeyPresses {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AWTException {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/key_presses");
@@ -35,11 +38,12 @@ public class KeyPresses {
 
        //Using Robot class
        Robot robot = new Robot();
-       robot.KeyPress(KeyEvent.VK_ENTER);
+       robot.keyPress(KeyEvent.VK_ENTER);
        robot.keyRelease(KeyEvent.VK_ENTER);
        Assert.assertTrue(result.getText().contains("ENTER"));
 
        //Using action with SendKeys
+
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
