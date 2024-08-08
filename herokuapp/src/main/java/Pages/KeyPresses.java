@@ -32,6 +32,14 @@ public class KeyPresses {
        Actions act = new Actions(driver);
        act.keyDown(Keys.ARROW_DOWN).keyUp(Keys.ARROW_DOWN).perform();
        Assert.assertTrue(result.getText().contains("DOWN"));
+
+       //Using Robot class
+       Robot robot = new Robot();
+       robot.KeyPress(KeyEvent.VK_ENTER);
+       robot.keyRelease(KeyEvent.VK_ENTER);
+       Assert.assertTrue(result.getText().contains("ENTER"));
+
+       //Using action with SendKeys
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
