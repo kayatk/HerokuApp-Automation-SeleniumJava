@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class KeyPresses {
     public static void main(String[] args) {
@@ -28,7 +29,9 @@ public class KeyPresses {
        Assert.assertTrue(result.getText().contains("SHIFT"));
 
        //Using action class
-       Actionact
+       Actions act = new Actions(driver);
+       act.keyDown(Keys.ARROW_DOWN).keyUp(Keys.ARROW_DOWN).perform();
+       Assert.assertTrue(result.getText().contains("DOWN"));
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
