@@ -1,5 +1,7 @@
 package Pages;
 
+import javax.swing.Action;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -24,6 +26,9 @@ public class KeyPresses {
        //using Keys class 
        input.sendKeys(Keys.SHIFT);
        Assert.assertTrue(result.getText().contains("SHIFT"));
+
+       //Using action class
+       Actionact
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
