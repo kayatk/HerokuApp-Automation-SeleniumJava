@@ -23,14 +23,10 @@ public class Hovers {
         int i=1;
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='figure']"));
         for (WebElement webElement : elements) {
-            act.moveToElement(webElement).pause(Duration.ofSeconds(2)).build().perform();
-            driver.findElement(By.xpath("//a[@href='/users/"+i+"']")).click();
-            Set<String> windows = driver.getWindowHandles();
-                for (String win : windows) {
-                    driver.switchTo().window(win);
-                    //driver.findElement(By.xpath("")).click();
-                    driver.close();
-                }
+          act.moveToElement(webElement).pause(Duration.ofSeconds(2)).build().perform();
+         driver.findElement(By.xpath("//a[@href='/users/"+i+"']")).click();
+         Assert.assertTrue(driver.getCurrentUrl().contains("/users/"+i));
+         driver.navigate().back();
             i++;
         }
 
