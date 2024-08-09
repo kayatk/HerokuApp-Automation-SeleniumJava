@@ -19,7 +19,6 @@ public class Hovers {
         Assert.assertTrue(driver.getCurrentUrl().contains("hovers"));
 
         Actions act = new Actions(driver);
-        String parentWindow= driver.getWindowHandle();
         int i=1;
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='figure']"));
         for (WebElement webElement : elements) {
