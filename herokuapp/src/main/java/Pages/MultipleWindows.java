@@ -18,7 +18,7 @@ public class MultipleWindows {
        driver.findElement(By.xpath("//a[text()='Click Here'] ")).click();
        Set<String> windows = driver.getWindowHandles();
        for(String i :windows){
-            if(parentWindow != i){
+            if(!parentWindow.equals(i)){
                 driver.switchTo().window(i);
                 Assert.assertTrue(driver.getCurrentUrl().contains("new"));
                 Assert.assertTrue(driver.findElement(By.xpath("//h3[text()='New Window']")).isDisplayed());
