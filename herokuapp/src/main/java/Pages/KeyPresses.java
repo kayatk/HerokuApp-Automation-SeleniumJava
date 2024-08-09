@@ -37,12 +37,15 @@ public class KeyPresses {
        Assert.assertTrue(result.getText().contains("DOWN"));
 
        //Using Robot class
+       input.click();
        Robot robot = new Robot();
-       robot.keyPress(KeyEvent.VK_ENTER);
-       robot.keyRelease(KeyEvent.VK_ENTER);
-       Assert.assertTrue(result.getText().contains("ENTER"));
+      robot.keyPress(KeyEvent.VK_0);
+      robot.keyRelease(KeyEvent.VK_0);
+       Assert.assertTrue(result.getText().contains("0"));  
 
-       //Using action with SendKeys
+      /* Using action with SendKeys
+       act.click(input).sendKeys("sendKeys" + Keys.ENTER).perform();
+       Assert.assertTrue(result.getText().contains("ENTER")); */
 
         try {
             Thread.sleep(3000);
