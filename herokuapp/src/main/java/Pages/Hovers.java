@@ -26,12 +26,6 @@ public class Hovers {
           act.moveToElement(webElement).pause(Duration.ofSeconds(2)).build().perform();
          driver.findElement(By.xpath("//a[@href='/users/"+i+"']")).click();
          Assert.assertTrue(driver.getCurrentUrl().contains("/users/"+i));
-         try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
          driver.navigate().back();
             i++;
         }
