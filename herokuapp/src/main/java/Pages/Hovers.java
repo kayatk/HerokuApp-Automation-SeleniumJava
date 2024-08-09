@@ -1,6 +1,8 @@
 package Pages;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -17,11 +19,19 @@ public class Hovers {
         Assert.assertTrue(driver.getCurrentUrl().contains("hovers"));
 
         Actions act = new Actions(driver);
-        
+        String parentWindow= driver.getWindowHandle();
+        int i=1;
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='figure']"));
         for (WebElement webElement : elements) {
-            act.moveToElement(webElement).perform();
-           // Assert.assertTrue(driver.findElement(By.className("figcaption")).isDisplayed());
+            act.moveToElement(webElement).pause(Duration.ofSeconds(2)).build().perform();
+            driver.findElement(By.xpath("//a[@href='/users/"+i+"']")).click();
+            Set<String> windows = driver.getWindowHandles();
+                for (String win : windows) {
+                    driver.switchTo().window(win);
+                    //driver.findElement(By.xpath("")).click();
+                    driver.close();
+                }
+            i++;
         }
 
         driver.quit();
