@@ -12,7 +12,10 @@ public class IFrame {
         driver.get("https://the-internet.herokuapp.com/nested_frames");
         Assert.assertTrue(driver.getCurrentUrl().contains("nested_frames"));
 
-        driver.findElement(By.xpath("//body[contains(text(),'LEFT')]")).isDisplayed();
+        driver.switchTo().frame("frame-bottom");
+       Assert.assertTrue( driver.findElement(By.xpath("//body[contains(text(),'BOTTOM')]")).isDisplayed());
+
+       driver.switchTo().frame("");
 
         driver.quit();
     }
