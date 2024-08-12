@@ -15,6 +15,9 @@ public class NestedFrames {
 
         driver.switchTo().frame("mce_0_ifr");
         Assert.assertTrue(driver.findElement(By.xpath("//p[contains(text(),'Your content')]")).isDisplayed());
+        driver.switchTo().defaultContent();
+       Boolean val= driver.findElement(By.xpath("//h3[contains(text(),'An iFrame')]")).isDisplayed();
+       Assert.assertTrue(val);
 
     }
 }
