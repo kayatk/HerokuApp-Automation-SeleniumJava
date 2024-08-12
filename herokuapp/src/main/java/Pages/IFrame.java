@@ -14,7 +14,8 @@ public class IFrame {
 
         driver.switchTo().frame("frame-bottom");
        Assert.assertTrue( driver.findElement(By.xpath("//body[contains(text(),'BOTTOM')]")).isDisplayed());
-       driver.switchTo().parentFrame();
+
+       driver.switchTo().defaultContent();
        driver.switchTo().frame("frame-top");
        driver.switchTo().frame("frame-left");
        Assert.assertTrue( driver.findElement(By.xpath("//body[contains(text(),'LEFT')]")).isDisplayed());
