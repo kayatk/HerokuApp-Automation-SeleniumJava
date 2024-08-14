@@ -19,7 +19,8 @@ public class ShadowDOMexpandtesting {
         WebElement btn= (WebElement) js.executeScript("return document.querySelector('#shadow-host').shadowRoot.querySelector('button');");
         js.executeScript("arguments[0].click();", btn);
 
-    
+        //another way to interact
+        
     //System.out.println(driver.findElement(By.xpath("//span")).getText());
 
     driver.quit();
