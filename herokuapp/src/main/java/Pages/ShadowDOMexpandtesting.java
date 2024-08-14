@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ShadowDOMexpandtesting {
@@ -15,8 +16,9 @@ public class ShadowDOMexpandtesting {
         Assert.assertTrue(driver.getCurrentUrl().contains("shadowdom"));
 
         JavascriptExecutor js =(JavascriptExecutor)driver;
-        js.executeScript("return document.querySelector('#shadow-host').shadowRoot.querySelector('button');")
-
+        WebElement btn= (WebElement) js.executeScript("return document.querySelector('#shadow-host').shadowRoot.querySelector('button');")
+        btn.click();
+        
     
     System.out.println(driver.findElement(By.xpath("//span")).getText());
 
