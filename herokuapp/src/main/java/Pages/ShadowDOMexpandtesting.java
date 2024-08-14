@@ -16,11 +16,11 @@ public class ShadowDOMexpandtesting {
         Assert.assertTrue(driver.getCurrentUrl().contains("shadowdom"));
 
         JavascriptExecutor js =(JavascriptExecutor)driver;
-        WebElement btn= (WebElement) js.executeScript("return document.querySelector('#shadow-host').shadowRoot.querySelector('button');")
-        js.executeScript("arguments[0].", args)
+        WebElement btn= (WebElement) js.executeScript("return document.querySelector('#shadow-host').shadowRoot.querySelector('button');");
+        js.executeScript("arguments[0].click();", btn);
 
     
-    System.out.println(driver.findElement(By.xpath("//span")).getText());
+    //System.out.println(driver.findElement(By.xpath("//span")).getText());
 
     driver.quit();
     }
