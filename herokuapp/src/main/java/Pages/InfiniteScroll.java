@@ -12,12 +12,8 @@ public class InfiniteScroll {
         driver.get("https://the-internet.herokuapp.com/infinite_scroll");
         Assert.assertTrue(driver.getCurrentUrl().contains("infinite_scroll"));
 
-        while (footerIsNotPresent()) {
-            
-        }
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.");
-
+        js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
     }
 }
