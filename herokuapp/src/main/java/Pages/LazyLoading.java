@@ -13,7 +13,7 @@ public class LazyLoading {
         driver.get("https://the-internet.herokuapp.com/infinite_scroll");
         Assert.assertTrue(driver.getCurrentUrl().contains("infinite_scroll"));
 
-         // Initialize JavaScript Executor
+        
          JavascriptExecutor js = (JavascriptExecutor) driver;
 
          // Get the initial page height
@@ -41,10 +41,6 @@ public class LazyLoading {
              lastHeight = newHeight;
          }
  
-         // You can now interact with elements at the bottom of the page or continue as needed
- 
-         // Optionally, close the browser when done
-         // driver.quit();
 
     }
 }
