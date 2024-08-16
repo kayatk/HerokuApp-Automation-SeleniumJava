@@ -11,6 +11,8 @@ public class SecureFileDownload {
         driver.manage().window().maximize();
         driver.get("https://practice.expandtesting.com/shadowdom");
         Assert.assertTrue(driver.getCurrentUrl().contains("shadowdom"));
+
+        admin
     }
         
 }
