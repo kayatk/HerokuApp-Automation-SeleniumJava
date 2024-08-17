@@ -25,18 +25,18 @@ public class FormAuthentication {
             driver.findElement(password).sendKeys("passwords");
             driver.findElement(loginBtn).click();
             Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your username is invalid!"));
-            
-
-
-
         //Invalid Password
-
-        //Invalid userName
-
+            driver.findElement(userName).sendKeys("tomsmith");
+            driver.findElement(password).sendKeys("passwords");
+            driver.findElement(loginBtn).click();
+            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your password is invalid!"));
         //Valid Login
-
+            driver.findElement(userName).sendKeys("tomsmith");
+            driver.findElement(password).sendKeys("SuperSecretPassword!");
+            driver.findElement(loginBtn).click();
+            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("You logged into a secure area!"));
         //Logout
-
+            
         driver.quit();
     }
 }
