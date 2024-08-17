@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
@@ -54,10 +55,11 @@ public class FormAuthentication {
         JSONParser js =new JSONParser();
         FileReader file =new FileReader("herokuapp/src/main/resources/credentials.json");
         Object ob =js.parse(file);
-        JSONArray jarr = (JSONArray) ob;
-        
-        
-
+        JSONObject jobj = (JSONObject)ob;
+        JSONArray jarr = (JSONArray) jobj.get("credentials");
+        for (Object arr : jarr) {
+            
+        }
     }
 
     
