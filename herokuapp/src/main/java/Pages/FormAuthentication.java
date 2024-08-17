@@ -11,5 +11,15 @@ public class FormAuthentication {
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/login");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
+
+        //Invalid credentials
+
+        //Invalid Password
+
+        //Invalid userName
+
+        //Valid Login
+
+        //Logout
     }
 }
