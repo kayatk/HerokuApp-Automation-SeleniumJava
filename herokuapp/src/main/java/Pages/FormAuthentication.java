@@ -19,7 +19,10 @@ public class FormAuthentication {
         By logoutBtn = By.className("button secondary radius");
 
         //Invalid credentials
-
+            driver.findElement(userName).sendKeys("Wrong username");
+            driver.findElement(password).sendKeys("passwords");
+            driver.findElement(logoutBtn).click();
+            
 
         //Invalid Password
 
