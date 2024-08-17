@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,8 +13,14 @@ public class FormAuthentication {
         driver.get("https://the-internet.herokuapp.com/login");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
 
+        By userName= By.xpath("");
+        By password =By.xpath("");
+        By loginBtn = By.xpath("");
+        By logoutBtn = By.xpath("");
+
         //Invalid credentials
 
+        
         //Invalid Password
 
         //Invalid userName
