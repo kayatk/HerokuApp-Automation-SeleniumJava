@@ -13,14 +13,14 @@ public class FormAuthentication {
         driver.get("https://the-internet.herokuapp.com/login");
         Assert.assertTrue(driver.getCurrentUrl().contains("login"));
 
-        By userName= By.xpath("");
-        By password =By.xpath("");
-        By loginBtn = By.xpath("");
-        By logoutBtn = By.xpath("");
+        By userName= By.id("username");
+        By password =By.id("password");
+        By loginBtn = By.xpath("//button[@type='submit']");
+        By logoutBtn = By.className("button secondary radius");
 
         //Invalid credentials
 
-        
+
         //Invalid Password
 
         //Invalid userName
