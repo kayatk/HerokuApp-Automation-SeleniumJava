@@ -16,13 +16,18 @@ public class FormAuthentication {
         By userName= By.id("username");
         By password =By.id("password");
         By loginBtn = By.xpath("//button[@type='submit']");
-        By logoutBtn = By.className("button secondary radius");
+       // By logoutBtn = By.className("button secondary radius");
+        By message =By.id("flash");
 
+        
         //Invalid credentials
             driver.findElement(userName).sendKeys("Wrong username");
             driver.findElement(password).sendKeys("passwords");
-            driver.findElement(logoutBtn).click();
+            driver.findElement(loginBtn).click();
+            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your username is invalid!"));
             
+
+
 
         //Invalid Password
 
@@ -31,5 +36,7 @@ public class FormAuthentication {
         //Valid Login
 
         //Logout
+
+        driver.quit();
     }
 }
