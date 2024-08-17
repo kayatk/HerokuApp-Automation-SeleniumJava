@@ -17,51 +17,50 @@ import com.google.gson.JsonObject;
 import junit.framework.Assert;
 
 public class FormAuthentication {
-    public static void main(String[] args) {
-        WebDriver driver =new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://the-internet.herokuapp.com/login");
-        Assert.assertTrue(driver.getCurrentUrl().contains("login"));
+            public static void main(String[] args) throws IOException, ParseException {
+                    WebDriver driver =new ChromeDriver();
+                    driver.manage().window().maximize();
+                    driver.get("https://the-internet.herokuapp.com/login");
+                    Assert.assertTrue(driver.getCurrentUrl().contains("login"));
 
-        By userName= By.id("username");
-        By password =By.id("password");
-        By loginBtn = By.xpath("//button[@type='submit']");
-        By logoutBtn = By.className("button");
-        By message =By.id("flash");
+                    By userName= By.id("username");
+                    By password =By.id("password");
+                    By loginBtn = By.xpath("//button[@type='submit']");
+                    By logoutBtn = By.className("button");
+                    By message =By.id("flash");
 
-        //Invalid credentials
-            driver.findElement(userName).sendKeys("Wrong username");
-            driver.findElement(password).sendKeys("passwords");
-            driver.findElement(loginBtn).click();
-            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your username is invalid!"));
-        //Invalid Password
-            driver.findElement(userName).sendKeys("tomsmith");
-            driver.findElement(password).sendKeys("passwords");
-            driver.findElement(loginBtn).click();
-            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your password is invalid!"));
-        //Valid Login
-            driver.findElement(userName).sendKeys("tomsmith");
-            driver.findElement(password).sendKeys("SuperSecretPassword!");
-            driver.findElement(loginBtn).click();
-            Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("You logged into a secure area!"));
-        //Logout
-            driver.findElement(logoutBtn).click();
-            Assert.assertTrue("Invalid Message on Logout",driver.findElement(message).getText().contains("You logged out of the secure area!"));
+                    //Invalid credentials
+                        driver.findElement(userName).sendKeys(dataReader("Invalid","userName"));
+                        driver.findElement(password).sendKeys(dataReader("Invalid","password"));
+                        driver.findElement(loginBtn).click();
+                        Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your username is invalid!"));
+                    //Invalid Password
+                        driver.findElement(userName).sendKeys(dataReader("Valid","userName"));
+                        driver.findElement(password).sendKeys(dataReader("Invalid","password"));
+                        driver.findElement(loginBtn).click();
+                        Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("Your password is invalid!"));
+                    //Valid Login
+                        driver.findElement(userName).sendKeys(dataReader("Valid","userName"));
+                        driver.findElement(password).sendKeys(dataReader("Valid","password"));
+                        driver.findElement(loginBtn).click();
+                        Assert.assertTrue("Invalid Message",driver.findElement(message).getText().contains("You logged into a secure area!"));
+                    //Logout
+                        driver.findElement(logoutBtn).click();
+                        Assert.assertTrue("Invalid Message on Logout",driver.findElement(message).getText().contains("You logged out of the secure area!"));
 
-        driver.quit();
-    }
+                    driver.quit();
+            }
 
-    public void jsonReader() throws IOException, ParseException{
-        JSONParser js =new JSONParser();
-        FileReader file =new FileReader("herokuapp/src/main/resources/credentials.json");
-        Object ob =js.parse(file);
-        JSONObject jobj = (JSONObject)ob;
-        JSONArray jarr = (JSONArray) jobj.get("credentials");
-        for (Object arr : jarr) {
+            public static String dataReader(String crdentialType,String key) throws IOException, ParseException{
+                JSONParser js =new JSONParser();
+                FileReader file =new FileReader("herokuapp/src/main/resources/credentials.json");
+                Object ob =js.parse(file);
+                JSONObject jobj = (JSONObject)ob;
+                JSONObject jcred = (JSONObject) jobj.get(crdentialType);
+                String value = (String)jcred.get(key);
+                return value;
+            }
             
-        }
-    }
-
     
 }
     
